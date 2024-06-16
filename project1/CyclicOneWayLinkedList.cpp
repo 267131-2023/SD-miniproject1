@@ -1,17 +1,24 @@
 #include <iostream>
-#include "OneWayLinkedListH.h"
+#include "CyclicOneWayLinkedList.h"
 
 using namespace std;
 
-OneWayLinkedListH::OneWayLinkedListH() : head(nullptr), size(0) {}
+CyclicOneWayLinkedList::CyclicOneWayLinkedList() : head(nullptr), size(0) {}
 
-OneWayLinkedListH::~OneWayLinkedListH() {
+CyclicOneWayLinkedList::~CyclicOneWayLinkedList() {
     if (head != nullptr) {
-        OneWayNode* current = head;
-        do {
-            OneWayNode* next = current->getNextNode();
+        OneWayNode* current = head->getNextNode();
+        OneWayNode* next = nullptr;
+
+        // Usuwamy wszystkie węzły poza głową
+        while (current != head) {
+            next = current->getNextNode();
             delete current;
             current = next;
-        } while (current != head);
+        }
+
+        // Usuwamy głowę
+        delete head;
+        head = nullptr;
     }
 }
