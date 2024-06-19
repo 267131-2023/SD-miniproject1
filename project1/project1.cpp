@@ -5,6 +5,8 @@
 #include "OneWayLinkedListH.h"
 #include "OneWayLinkedListHT.h"
 #include "TwoWayLinkedList.h"
+#include "CyclicOneWayLinkedList.h"
+#include "SkipList.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -404,6 +406,8 @@ int main()
     OneWayLinkedListHT listHT = OneWayLinkedListHT();
     TwoWayLinkedList list = TwoWayLinkedList();
     dynamicArray array;
+    CyclicOneWayLinkedList cyclicList = CyclicOneWayLinkedList();
+    SkipList skipList = SkipList(4, 0.5);
     int choice;
     int number = 10000; //liczba elementów zbioru
     int element = 1;
@@ -420,10 +424,10 @@ int main()
         listH.addNodeAtEnd(randomNumber);
         listHT.addNodeAtEnd(randomNumber);
         list.addNodeAtEnd(randomNumber);
+        cyclicList.addNodeAtBeginning(randomNumber);
     }
     
 
-    
     
     
     
